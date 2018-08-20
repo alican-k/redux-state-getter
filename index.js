@@ -19,11 +19,13 @@ const altState = (altName, functions) => {
 		defaultToAltState(altName), 
 		functions
 	)
-	return {
-		self	: pick([altName]),
-		pick	: allInObj(functionsWithAltState),
-		...functionsWithAltState
-	}
+	return mergeAll([
+		{
+			self	: pick([altName]),
+			pick	: allInObj(functionsWithAltState)
+		},
+		functionsWithAltState
+	])
 }
 
 module.exports = altState
